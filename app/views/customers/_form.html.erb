@@ -13,7 +13,11 @@
 
   <%= form.number_field :seats, in: 1.0..15.0, step: 1 %>
 
-  <div class="actions">
-    <%= form.submit %>
+  <h4>Reservation Time</h4>
+
+  <%= form.time_field :reserve_time %>
+
+  <div class="submit">
+    <%= form.submit 'Reserve your table', class: 'submit-button' %>
   </div>
 <% end %>
