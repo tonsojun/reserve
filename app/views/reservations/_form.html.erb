@@ -1,5 +1,23 @@
-<%= form_with model: @article do |form| %>
-  <%= form.text_field :title %>
-  <%= form.text_area :body, size: "60x10" %>
-  <%= form.submit %>
+<%= form_with(model: @reservation, local: true) do |form| %>
+  <% if @reservation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+
+      <ul>
+        <% @reservation.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.number_field :seats, in: 1.0..15.0, step: 1 %>
+
+  <h4>Reservation Time</h4>
+
+  <%= form.time_field :reserve_time %>
+
+  <div class="submit">
+    <%= form.submit 'Reserve your table', class: 'submit-button' %>
+  </div>
 <% end %>
