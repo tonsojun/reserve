@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
   resource :customers, :restuarants, :reservations
   
-  root 'reservations#new'
+  root 'home#index'
 end
